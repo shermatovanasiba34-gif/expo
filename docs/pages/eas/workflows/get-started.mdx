@@ -1,4 +1,86 @@
----
+{
+  "expo": {
+    "name": "NutriTrack Pro",
+    "slug": "nutritrack-pro",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#080B12"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#080B12"
+      },
+      "package": "com.nutritrack.pro"
+    },
+    "ios": {
+      "bundleIdentifier": "com.nutritrack.pro"
+    }
+  }
+}export const LANG = {
+  uz: {
+    appName: "NutriTrack",
+    tabs: ["Ovqat", "Suv", "Kun", "Vazn", "Statistika"],
+    uploadBtn: "Rasm yuklash",
+    analyzing: "AI tahlil qilmoqda...",
+    addMeal: "Qo'shish",
+    noMeals: "Ovqat qo'shilmagan",
+    protein: "Oqsil", carbs: "Uglevod", fat: "Yog'",
+    kcal: "kcal", g: "g", ml: "ml",
+    consumed: "Iste'mol", remaining: "Qoldi", goal: "Maqsad",
+    water: "Suv", waterGoal: "Kunlik maqsad",
+    schedule: "Kun tartibi", addTask: "Vazifa qo'shish",
+    taskPlaceholder: "Yangi vazifa...",
+    add: "Qo'shish", done: "Bajarildi", pending: "Kutilmoqda",
+    weight: "Vazn", height: "Bo'y", age: "Yosh", bmi: "BMI",
+    bmiLabels: ["Kam vazn", "Normal", "Ortiqcha", "Semizlik"],
+    save: "Saqlash", kg: "kg", cm: "cm",
+    male: "Erkak", female: "Ayol",
+    calorieGoal: "Kaloriya maqsadi",
+    waterDone: "Maqsadga yetdingiz! 🎉",
+    statsTitle: "Haftalik statistika",
+    today: "Bugun", avgKcal: "O'rtacha",
+    days: ["Du","Se","Ch","Pa","Ju","Sh","Ya"],
+  },
+  en: {
+    appName: "NutriTrack",
+    tabs: ["Food", "Water", "Day", "Weight", "Stats"],
+    uploadBtn: "Upload Photo",
+    analyzing: "AI analyzing...",
+    addMeal: "Add Meal",
+    noMeals: "No meals yet",
+    protein: "Protein", carbs: "Carbs", fat: "Fat",
+    kcal: "kcal", g: "g", ml: "ml",
+    consumed: "Consumed", remaining: "Remaining", goal: "Goal",
+    water: "Water", waterGoal: "Daily goal",
+    schedule: "Schedule", addTask: "Add Task",
+    taskPlaceholder: "New task...",
+    add: "Add", done: "Done", pending: "Pending",
+    weight: "Weight", height: "Height", age: "Age", bmi: "BMI",
+    bmiLabels: ["Underweight", "Normal", "Overweight", "Obese"],
+    save: "Save", kg: "kg", cm: "cm",
+    male: "Male", female: "Female",
+    calorieGoal: "Calorie Goal",
+    waterDone: "Goal reached! 🎉",
+    statsTitle: "Weekly Stats",
+    today: "Today", avgKcal: "Average",
+    days: ["Mo","Tu","We","Th","Fr","Sa","Su"],
+  },
+};import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export const saveData = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key, JSON.stringify(value));
+  } catch (e) { console.error(e); }
+};
+
+export const loadData = async (key, fallback) => {
+  try {
+    const val = await AsyncStorage.getItem(key);
+    return val ? JSON.parse(val) : fallback;
+  } catch (e) { return fallback; }
+};---
 title: Get started with EAS Workflows
 sidebar_title: Get started
 description: Learn how to use EAS Workflows to automate your React Native CI/CD development and release processes.
